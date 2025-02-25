@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap - 台北101 & 花博公園</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>OpenStreetMap - 台北101 & 花博公園</h2>
+    <div id="map"></div>
+    <script>
+        // 初始化地圖，設定中心為台北市
+        var map = L.map('map').setView([25.05, 121.54], 12); // 讓地圖顯示範圍適合兩個標記
+
+        // 使用 OpenStreetMap 圖層
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 台北101標記
+        var taipei101 = L.marker([25.033964, 121.564472]).addTo(map)
+            .bindPopup('<b>台北101</b><br>這裡是台北的地標。')
+            .openPopup();
+
+        // 花博公園標記
+        var huabo = L.marker([25.071, 121.522]).addTo(map)
+            .bindPopup('<b>花博公園</b><br>這裡是台北的花博會場地。');
+
+    </script>
+</body>
+</html>
